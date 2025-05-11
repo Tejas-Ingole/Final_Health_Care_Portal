@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f0faff, #e0f7ff);
+}
+
+/* Navigation Bar */
+header {
+    background: #0077b6;
+    opacity: 0.9;
+    padding: 15px 0;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 10px;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background: #00b4d8;
+    border-radius: 5px;
+}
+
+
+.facilityCards {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.facilityCards h2 {
+    font-size: 2rem;
+    color: #007b8a;
+    margin-bottom: 2rem;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: rgb(144, 224, 249);
+    border-radius: 20px;
+    padding: 2rem 1rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    background-color: #1cc7f2;
+}
+
+.icon {
+    font-size: 2rem;
+    color: #007b8a;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.3rem;
+}
+
+.card .info {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    color: #444;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+.card.active .info {
+    max-height: 150px;
+    opacity: 1;
+    margin-top: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .facilityCards {
+        padding: 2rem 1rem;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .logo {
+        margin-bottom: 0.5rem;
+    }
+}

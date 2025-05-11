@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f0faff, #e0f7ff);
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Navigation Bar */
+header {
+    background: #0077b6;
+    opacity: 0.9;
+    padding: 15px 0;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 10px;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background: #00b4d8;
+    border-radius: 5px;
+}
+
+.heading{
+    text-align: center;
+    padding: 2rem;
+    color: rgb(19, 8, 36);
+}
+
+.doctor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.doctor-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;  /* Makes it a circle */
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #4ec0e5;
+}
+
+
+.doctor-card {
+    background: rgb(183, 231, 252);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.4s ease;
+    text-align: center;
+}
+
+.doctor-card:hover {
+    transform: translateY(-6px);
+    background-color: #d8f3fa;
+}
+
+.doctor-icon {
+    font-size: 2rem;
+    color: #4ec0e5;
+    margin-bottom: 1rem;
+}
+
+.bio {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 0.5rem;
+}

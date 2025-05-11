@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MedicalCare Multi-Speciality Hospital</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="facility.html">Facility</a></li>
+                <li><a href="doctor.html">Doctors</a></li>
+                <li><a href="login.html" class="active">Login</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="outerlogin">
+        <div class="form-container">
+            <form action="LoginServlet" method="get">
+    <h1>Login Page</h1>
+
+    <div id="error-message" style="color: red; margin-bottom: 10px;"></div>
+
+    <label for="role">Select Role</label>
+    <select name="role" id="role" required>
+        <option value="" disabled selected>Choose your role</option>
+        <option value="user">User</option>
+        <option value="doctor">Doctor</option>
+        <option value="admin">Admin</option>
+    </select>
+
+    <br><br>
+
+    <label for="id">User Name</label>
+    <input type="text" name="id" id="id" placeholder="Enter Your Email Id" required><br><br>
+
+    <label for="pass">Password</label>
+    <input type="password" name="pass" id="pass" placeholder="Enter Your Password" required><br><br>
+
+    <input type="submit" name="submit" value="Submit"><br><br>
+
+    <div class="links">
+        <a href="forgot.html">Forgot Password</a>
+        <a href="signup.html">Sign Up</a>
+    </div>
+</form>
+
+<script>
+    // Read query parameter from URL and show error message if present
+    const params = new URLSearchParams(window.location.search);
+    const msg = params.get("msg");
+    if (msg) {
+        document.getElementById("error-message").innerText = decodeURIComponent(msg);
+    }
+</script>
+
+            
+        </div>
+    </section>
+</body>
+</html>

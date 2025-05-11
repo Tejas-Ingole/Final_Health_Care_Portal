@@ -1,0 +1,139 @@
+html{
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+nav {
+    background-color: rgba(132, 225, 205, 0.6); /* Improved opacity for better readability */
+    padding: 10px 0;
+    text-align: center;
+    height: 85px;
+    width: 100%;
+    position: fixed;
+    z-index: 111;
+}
+
+Body{
+    background-image: url("asset/hospital.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+}
+
+
+.main ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main ul li {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 49px;
+    align-content: center;
+    padding-bottom: 10px;
+
+}
+
+.main ul li a {
+    text-decoration: none;
+    color: black; /* Ensure text is readable */
+    transition: color 0.2s ease-in-out;
+}
+
+.main ul li a:hover {
+    color: gold; /* Add hover effect */
+}
+
+.LOGO{
+    height: 6rem;
+    width: 6rem;
+    object-fit: cover; /* Ensures images maintain aspect ratio */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+}
+
+.Hname{
+    position: absolute;
+    top: 20%;
+
+    margin-left: 2rem;
+}
+
+.Hname h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: underline;
+    color: purple;
+}
+
+.Hname h3{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1rem;
+}
+
+.image_container{
+    height: 320px;
+    width: 40%;
+}
+
+.IMAGE{
+    border-radius: 10px;
+    height: 275px; 
+    width: 38rem;
+    transition-duration: 0.5s;
+    margin-top: 20px;
+
+}
+
+.IMAGE:hover{
+    box-shadow: 2px 2px 10px black;
+}
+
+.contact{
+    background-color: rgba(132, 225, 205); 
+    padding: 10px 20px;
+    text-align: left;
+    height: auto;
+    width: 100%;
+    position: absolute;
+    top: 40rem;
+    margin-top: 150px;
+} 
+
+.contact h3 {
+    font-size: 24px;
+    color: #045d56; 
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+
+.contact h5 {
+    font-size: 16px;
+    color: #033c35;
+    line-height: 1.6;
+    font-weight: normal;
+}
+
+.contact h5 div{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    height: auto;
+    margin-left: 2.5rem;
+    margin-right: 4.2rem;
+    
+} 
+
+
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Facility - MedicalCare Multi-Speciality Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="facility.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MedicalCare Multi-Speciality Hospital</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="facility.html" class="active">Facility</a></li>
+                <li><a href="doctor.html">Doctors</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">SignUp</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="facilityCards">
+        <h2>Our World-Class Facilities</h2>
+            <div class="cards-container">
+                <div class="card" onclick="toggleInfo(this)">
+                    <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                    <h3>Cardiology</h3>
+                    <p class="info">Comprehensive heart care including diagnostics, angioplasty, pacemakers, and surgery.</p>
+                </div>
+                <div class="card" onclick="toggleInfo(this)">
+                    <div class="icon"><i class="fas fa-x-ray"></i></div>
+                    <h3>Radiology</h3>
+                    <p class="info">Advanced MRI, CT scan, X-ray, and ultrasound services with expert imaging consultants.</p>
+                </div>
+                <div class="card" onclick="toggleInfo(this)">
+                    <div class="icon"><i class="fas fa-ambulance"></i></div>
+                    <h3>Emergency</h3>
+                    <p class="info">24x7 emergency care, trauma services, ICU support, and critical care team always ready.</p>
+                </div>
+                <div class="card" onclick="toggleInfo(this)">
+                    <div class="icon"><i class="fas fa-baby"></i></div>
+                    <h3>Maternity</h3>
+                    <p class="info">Modern labor rooms, painless delivery, postnatal care, and neonatal ICU for newborns.</p>
+                </div>
+                <div class="card" onclick="toggleInfo(this)">
+                    <div class="icon"><i class="fas fa-user-md"></i></div>
+                    <h3>General Surgery</h3>
+                    <p class="info">Expert surgical care with minimally invasive procedures, laparoscopic and robotic surgery.</p>
+                </div>
+                <div class="card" onclick="toggleInfo(this)">
+                    <div class="icon"><i class="fas fa-pills"></i></div>
+                    <h3>Pharmacy</h3>
+                    <p class="info">24/7 in-house pharmacy with quality-checked medicines and professional pharmacist guidance.</p>
+                </div>
+                <div class="card" onclick="toggleInfo(this)">
+                    <div class="icon"><i class="fas fa-brain"></i></div>
+                    <h3>Neurology</h3>
+                    <p class="info">Diagnosis and treatment of brain, spine, and nerve disorders by top neurologists and neurosurgeons.</p>
+                </div>
+                <div class="card" onclick="toggleInfo(this)">
+                    <div class="icon"><i class="fas fa-lungs"></i></div>
+                    <h3>Pulmonology</h3>
+                    <p class="info">Advanced care for asthma, COPD, lung infections, sleep disorders, and critical respiratory illness.</p>
+                </div>
+            </div>
+    </section>
+
+    <script>
+        function toggleInfo(card) {
+            card.classList.toggle("active");
+        }
+
+    </script>
+</body>
+</html>
