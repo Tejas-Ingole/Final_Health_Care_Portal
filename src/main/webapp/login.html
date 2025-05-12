@@ -51,14 +51,14 @@
     </div>
 </form>
 
-<script>
-    // Read query parameter from URL and show error message if present
-    const params = new URLSearchParams(window.location.search);
-    const msg = params.get("msg");
-    if (msg) {
-        document.getElementById("error-message").innerText = decodeURIComponent(msg);
-    }
-</script>
+	<script>
+	    // Read query parameter from URL and show error message if present
+	    const params = new URLSearchParams(window.location.search);
+	    const msg = params.get("msg");
+	    if (msg) {
+	        document.getElementById("error-message").innerText = decodeURIComponent(msg);
+	    }
+	</script>
 
             
         </div>

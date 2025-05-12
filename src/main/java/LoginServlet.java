@@ -4,6 +4,8 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
@@ -22,73 +24,63 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        // Get parameters from request (GET method)
-        String email = request.getParameter("id");    // HTML form uses "id" as the name for email
-        String password = request.getParameter("pass"); // "pass" is the name for password
-        String role = request.getParameter("role");
+        String email = request.getParameter("id");     // From login form: name="id"
+        String password = request.getParameter("pass"); // From login form: name="pass"
+        String role = request.getParameter("role");     // From login form: name="role"
 
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
         try {
+            // JDBC setup
             String url = "jdbc:mysql://localhost:3307/HealthCarePortal";
             String user = "root";
             String pass = "root";
 
-            // Load JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // 1. Check for existing cookie
-            Cookie[] cookies = request.getCookies();
-            if (cookies != null) {
-                for (Cookie cookie : cookies) {
-                    // Check if the cookie name matches the current email
-                    if ("userEmail".equals(cookie.getName())) {
-                        // Optional: verify password for extra security (less secure than server-side validation)
-                        if (cookie.getValue().equals(password)) {
-                            redirectToRolePage(role, response);
-                            return;
-                        }
-                    }
-                }
-            }
-
-            // Correct SQL query with proper column names
-            String query = "SELECT * FROM users WHERE email = ? AND password_hash = ? AND role = ?";
-
-            // 2. Connect to database and validate credentials
-            conn = DriverManager.getConnection(url, user, pass);
-
-            email = email.trim(); // Trim any spaces from the email
+            // Trim inputs
+            email = email.trim();
             password = password.trim();
+
+            // Check database for credentials
+            String query = "SELECT * FROM users WHERE email = ? AND password_hash = ? AND role = ?";
+            conn = DriverManager.getConnection(url, user, pass);
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1, email);
-            pstmt.setString(2, password);
+            pstmt.setString(2, password); // Ideally, this should be hashed
             pstmt.setString(3, role);
-
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                // Valid login, create cookies and redirect
-                Cookie emailCookie = new Cookie("userEmail", email); // Save email in cookie
+                // Valid login - create session
+                HttpSession session = request.getSession(true); // create new session
+                String userName = rs.getString("name");
+                session.setAttribute("userName", userName);
+                session.setAttribute("role", role);
+
+                // Optionally create cookies
+                Cookie emailCookie = new Cookie("userEmail", email);
                 emailCookie.setMaxAge(3600); // 1 hour
                 response.addCookie(emailCookie);
 
-                Cookie roleCookie = new Cookie("userRole", role); // Save role in cookie
+                Cookie roleCookie = new Cookie("userRole", role);
                 roleCookie.setMaxAge(3600); // 1 hour
                 response.addCookie(roleCookie);
 
+                // Redirect to appropriate dashboard
                 redirectToRolePage(role, response);
             } else {
-                // Invalid credentials, redirect to login page
-            	response.sendRedirect("login.html?msg=Incorrect+username+or+password+or+role");
+                // Invalid credentials
+                response.sendRedirect("login.html?msg=Incorrect+username+or+password+or+role");
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            out.println("<h3>Error: " + e.getMessage() + "</h3>");
+            out.println("<h3>Login Error: " + e.getMessage() + "</h3>");
         } finally {
+            // Clean up JDBC
             try {
                 if (rs != null) rs.close();
                 if (pstmt != null) pstmt.close();
@@ -98,17 +90,18 @@ public class LoginServlet extends HttpServlet {
             }
         }
     }
-    
+
+    // Redirect to dashboards based on role
     private void redirectToRolePage(String role, HttpServletResponse response) throws IOException {
-        switch (role) {
+        switch (role.toLowerCase()) {
             case "user":
-                response.sendRedirect("userDashboard.html");
+                response.sendRedirect("userDashboard.jsp");
                 break;
             case "admin":
-                response.sendRedirect("adminDashboard.html");
+                response.sendRedirect("adminDashboard.jsp");
                 break;
             case "doctor":
-                response.sendRedirect("doctorDashboard.html");
+                response.sendRedirect("doctorDashboard.jsp");
                 break;
             default:
                 response.sendRedirect("login.html?msg=Invalid+role");

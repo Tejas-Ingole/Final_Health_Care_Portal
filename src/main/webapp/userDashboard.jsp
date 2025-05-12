@@ -1,3 +1,19 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%
+    // Disable browser caching and ensure the user is logged in
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+    response.setDateHeader("Expires", 0); // Proxies
+
+    // Check if the session is valid and the user is logged in
+    if (session == null || session.getAttribute("userName") == null) {
+        response.sendRedirect("login.html?msg=Please+login+first");
+        return;
+    }
+
+    String userName = (String) session.getAttribute("userName"); // Assuming you store userName in session
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +40,7 @@
     <a href="index.html#contact">Contact</a>
 
     <div class="logout-section">
-      <a href="login.html" class="logout-btn">Logout</a>
+      <a href="LogoutServlet" class="logout-btn">Logout</a>
     </div>    
   </div>
 
@@ -36,7 +52,7 @@
 
   <!-- Main Content -->
   <div class="main-content">
-    <h1>Welcome, User!</h1>
+    <h1>Welcome, <%= userName %>!</h1> <!-- Display user email from session -->
     <p>Manage your healthcare activities, appointments, and records all in one place.</p>
 
     <div class="dashboard-grid">
